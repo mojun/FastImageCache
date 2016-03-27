@@ -14,8 +14,7 @@ Pod::Spec.new do |s|
   s.homepage	   = 'https://github.com/mojun/MMTransitionAnimator'
   s.authors      = { 'mojun' => 'immojun@gmail.com' }
   s.summary      = 'iOS library for quickly displaying images while scrolling.'
-  s.source       = { :git => 'https://github.com/mojun/FastImageCache.git',
-                     :tag => '0.0.1' }
+  s.source       = { :git => 'https://github.com/mojun/FastImageCache.git' }
   s.source_files = 'FastImageCache','FastImageCache/FastImageCache/**/*.{h,m}'
   s.requires_arc = true
   s.platform     = :ios, '6ff
