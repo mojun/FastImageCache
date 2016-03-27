@@ -17,7 +17,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => 'https://github.com/mojun/FastImageCache.git' }
   s.source_files = 'FastImageCache','FastImageCache/FastImageCache/**/*.{h,m}'
   s.requires_arc = true
-  s.platform     = :ios, '6ff
-.0'
+  s.platform     = :ios, '6.0'
   
 end
