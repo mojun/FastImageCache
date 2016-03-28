@@ -7,9 +7,8 @@
 //
 
 #import "AverageColorHelper.h"
-#import "MOFileUtils.h"
 #import "UIColor+AverageColorConverter.h"
-#import "NSString+FileMD5.h"
+#import <CommonCrypto/CommonDigest.h>
 
 #define COLOR_CACHE_PATH @"COLOR_CACHE_PATH"
 
@@ -49,8 +48,8 @@
 
 #pragma mark - private methods
 + (NSString *)imagePathFromPathPath:(NSString *)path {
-    NSString *md5 = [path md5];
-    return [NSString stringWithFormat:@"%@/%@", [MOFileUtils getLocalFilePath:COLOR_CACHE_PATH], md5];
+    NSString *md5 = [self md5:path];
+    return [NSString stringWithFormat:@"%@/%@", [NSString stringWithFormat:@"%@/%@%@", NSHomeDirectory(),@"Documents/",COLOR_CACHE_PATH], md5];
 }
 
 +(BOOL)isDarkColor:(UIColor *)newColor{
@@ -67,6 +66,16 @@
     }else{
         return NO;
     }
+}
+
++ (NSString *)md5:(NSString *)s{
+    const char *cStr = [s UTF8String];
+    unsigned char result[16];
+    CC_MD5( cStr, strlen(cStr),result );
+    NSMutableString *hash =[NSMutableString string];
+    for (int i = 0; i < 16; i++)
+        [hash appendFormat:@"%02X", result[i]];
+    return [hash uppercaseString];
 }
 
 @end
