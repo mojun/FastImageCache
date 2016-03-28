@@ -10,6 +10,8 @@
 #import "FICEntity.h"
 #import "FICImageTable.h"
 #import "FICImageFormat.h"
+#import "AverageColorHelper.h"
+#import "UIImage+ColorProperty.h"
 
 #pragma mark Internal Definitions
 
@@ -173,6 +175,21 @@ static NSString *const FICImageCacheEntityKey = @"FICImageCacheEntityKey";
             UIImage *image = [imageTable newImageForEntityUUID:entityUUID sourceImageUUID:sourceImageUUID preheatData:YES];
             
             if (completionBlock != nil) {
+                
+                NSURL *sourceImageURL = [entity sourceImageURLWithFormatName:formatName];
+                if (image) {
+                    NSString *urlString = [sourceImageURL absoluteString];
+                    NSDictionary *colorInfo = [AverageColorHelper averageColorInfoFromPath:urlString];
+                    if (colorInfo == nil) {
+                        [AverageColorHelper saveImageAverageColor:image path:urlString];
+                        colorInfo = [AverageColorHelper averageColorInfoFromPath:urlString];
+                    }
+                    
+                    UIColor *averageColor = [colorInfo objectForKey:COLOR_STRING_KEY];
+                    BOOL isDarkColor = [[colorInfo objectForKey:IS_DARK_COLOR_KEY]boolValue];
+                    image.averageColor = averageColor;
+                    image.isDarkColor = isDarkColor;
+                }
                 dispatch_async(dispatch_get_main_queue(), ^{
                     completionBlock(entity, formatName, image);
                 });
@@ -182,8 +199,24 @@ static NSString *const FICImageCacheEntityKey = @"FICImageCacheEntityKey";
         UIImage *image = [imageTable newImageForEntityUUID:entityUUID sourceImageUUID:sourceImageUUID preheatData:NO];
         imageExists = image != nil;
         
+        NSURL *sourceImageURL = [entity sourceImageURLWithFormatName:formatName];
+        if (image) {
+            NSString *urlString = [sourceImageURL absoluteString];
+            NSDictionary *colorInfo = [AverageColorHelper averageColorInfoFromPath:urlString];
+            if (colorInfo == nil) {
+                [AverageColorHelper saveImageAverageColor:image path:urlString];
+                colorInfo = [AverageColorHelper averageColorInfoFromPath:urlString];
+            }
+            
+            UIColor *averageColor = [colorInfo objectForKey:COLOR_STRING_KEY];
+            BOOL isDarkColor = [[colorInfo objectForKey:IS_DARK_COLOR_KEY]boolValue];
+            image.averageColor = averageColor;
+            image.isDarkColor = isDarkColor;
+        }
         dispatch_block_t completionBlockCallingBlock = ^{
             if (completionBlock != nil) {
+                
+                
                 if (loadSynchronously) {
                     completionBlock(entity, formatName, image);
                 } else {
@@ -271,6 +304,8 @@ static NSString *const FICImageCacheEntityKey = @"FICImageCacheEntityKey";
     }
 }
 
+
+
 static void _FICAddCompletionBlockForEntity(NSString *formatName, NSMutableDictionary *entityRequestsDictionary, id <FICEntity> entity, FICImageCacheCompletionBlock completionBlock) {
     NSString *entityUUID = [entity UUID];
     NSMutableDictionary *requestDictionary = [entityRequestsDictionary objectForKey:entityUUID];
@@ -357,6 +392,20 @@ static void _FICAddCompletionBlockForEntity(NSString *formatName, NSMutableDicti
 
             UIImage *resultImage = [imageTable newImageForEntityUUID:entityUUID sourceImageUUID:sourceImageUUID preheatData:NO];
             
+            NSURL *sourceImageURL = [entity sourceImageURLWithFormatName:imageFormatName];
+            if (resultImage) {
+                NSString *urlString = [sourceImageURL absoluteString];
+                NSDictionary *colorInfo = [AverageColorHelper averageColorInfoFromPath:urlString];
+                if (colorInfo == nil) {
+                    [AverageColorHelper saveImageAverageColor:resultImage path:urlString];
+                    colorInfo = [AverageColorHelper averageColorInfoFromPath:urlString];
+                }
+                
+                UIColor *averageColor = [colorInfo objectForKey:COLOR_STRING_KEY];
+                BOOL isDarkColor = [[colorInfo objectForKey:IS_DARK_COLOR_KEY]boolValue];
+                resultImage.averageColor = averageColor;
+                resultImage.isDarkColor = isDarkColor;
+            }
             if (completionBlocks != nil) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     NSString *formatName = [[imageTable imageFormat] name];

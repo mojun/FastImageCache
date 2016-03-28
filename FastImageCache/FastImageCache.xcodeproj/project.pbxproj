@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		338632BE1CA97A2600F1FECF /* AverageColorHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 338632B81CA97A2600F1FECF /* AverageColorHelper.h */; };
+		338632BF1CA97A2600F1FECF /* AverageColorHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 338632B91CA97A2600F1FECF /* AverageColorHelper.m */; };
+		338632C01CA97A2600F1FECF /* AverageColorHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 338632B91CA97A2600F1FECF /* AverageColorHelper.m */; };
+		338632C11CA97A2600F1FECF /* UIColor+AverageColorConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 338632BA1CA97A2600F1FECF /* UIColor+AverageColorConverter.h */; };
+		338632C21CA97A2600F1FECF /* UIColor+AverageColorConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 338632BB1CA97A2600F1FECF /* UIColor+AverageColorConverter.m */; };
+		338632C31CA97A2600F1FECF /* UIColor+AverageColorConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 338632BB1CA97A2600F1FECF /* UIColor+AverageColorConverter.m */; };
+		338632C41CA97A2600F1FECF /* UIImage+ColorProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 338632BC1CA97A2600F1FECF /* UIImage+ColorProperty.h */; };
+		338632C51CA97A2600F1FECF /* UIImage+ColorProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 338632BD1CA97A2600F1FECF /* UIImage+ColorProperty.m */; };
+		338632C61CA97A2600F1FECF /* UIImage+ColorProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 338632BD1CA97A2600F1FECF /* UIImage+ColorProperty.m */; };
 		B2E5676E1B316D5800906840 /* FastImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = B2E5676D1B316D5800906840 /* FastImageCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B2E567741B316D5800906840 /* FastImageCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2E567681B316D5800906840 /* FastImageCache.framework */; };
 		B2E5677B1B316D5800906840 /* FastImageCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E5677A1B316D5800906840 /* FastImageCacheTests.m */; };
@@ -54,6 +63,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		338632B81CA97A2600F1FECF /* AverageColorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AverageColorHelper.h; sourceTree = "<group>"; };
+		338632B91CA97A2600F1FECF /* AverageColorHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AverageColorHelper.m; sourceTree = "<group>"; };
+		338632BA1CA97A2600F1FECF /* UIColor+AverageColorConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AverageColorConverter.h"; sourceTree = "<group>"; };
+		338632BB1CA97A2600F1FECF /* UIColor+AverageColorConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AverageColorConverter.m"; sourceTree = "<group>"; };
+		338632BC1CA97A2600F1FECF /* UIImage+ColorProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ColorProperty.h"; sourceTree = "<group>"; };
+		338632BD1CA97A2600F1FECF /* UIImage+ColorProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ColorProperty.m"; sourceTree = "<group>"; };
 		B2E567681B316D5800906840 /* FastImageCache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FastImageCache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2E5676C1B316D5800906840 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2E5676D1B316D5800906840 /* FastImageCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FastImageCache.h; sourceTree = "<group>"; };
@@ -180,6 +195,12 @@
 		B2E567841B316D9600906840 /* FastImageCache */ = {
 			isa = PBXGroup;
 			children = (
+				338632B81CA97A2600F1FECF /* AverageColorHelper.h */,
+				338632B91CA97A2600F1FECF /* AverageColorHelper.m */,
+				338632BA1CA97A2600F1FECF /* UIColor+AverageColorConverter.h */,
+				338632BB1CA97A2600F1FECF /* UIColor+AverageColorConverter.m */,
+				338632BC1CA97A2600F1FECF /* UIImage+ColorProperty.h */,
+				338632BD1CA97A2600F1FECF /* UIImage+ColorProperty.m */,
 				B2E567851B316D9600906840 /* FICEntity.h */,
 				B2E567861B316D9600906840 /* FICImageCache+FICErrorLogging.h */,
 				B2E567871B316D9600906840 /* FICImageCache.h */,
@@ -250,6 +271,7 @@
 				B2E5679A1B316D9600906840 /* FICImageTable.h in Headers */,
 				B2E5679E1B316D9600906840 /* FICImageTableEntry.h in Headers */,
 				B2E567941B316D9600906840 /* FICEntity.h in Headers */,
+				338632BE1CA97A2600F1FECF /* AverageColorHelper.h in Headers */,
 				B2E567A01B316D9600906840 /* FICImports.h in Headers */,
 				B2E567981B316D9600906840 /* FICImageFormat.h in Headers */,
 				B2E567A11B316D9600906840 /* FICUtilities.h in Headers */,
@@ -257,6 +279,8 @@
 				B2E567951B316D9600906840 /* FICImageCache+FICErrorLogging.h in Headers */,
 				B2E567961B316D9600906840 /* FICImageCache.h in Headers */,
 				B2E5676E1B316D5800906840 /* FastImageCache.h in Headers */,
+				338632C41CA97A2600F1FECF /* UIImage+ColorProperty.h in Headers */,
+				338632C11CA97A2600F1FECF /* UIColor+AverageColorConverter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,7 +416,10 @@
 				B2E5679D1B316D9600906840 /* FICImageTableChunk.m in Sources */,
 				B2E567971B316D9600906840 /* FICImageCache.m in Sources */,
 				B2E567A21B316D9600906840 /* FICUtilities.m in Sources */,
+				338632C51CA97A2600F1FECF /* UIImage+ColorProperty.m in Sources */,
+				338632C21CA97A2600F1FECF /* UIColor+AverageColorConverter.m in Sources */,
 				B2E5679F1B316D9600906840 /* FICImageTableEntry.m in Sources */,
+				338632BF1CA97A2600F1FECF /* AverageColorHelper.m in Sources */,
 				B2E567991B316D9600906840 /* FICImageFormat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,9 +438,12 @@
 			files = (
 				B2E567DA1B316E1000906840 /* FICDAppDelegate.m in Sources */,
 				B2E567EB1B316E6600906840 /* FICImageTableChunk.m in Sources */,
+				338632C61CA97A2600F1FECF /* UIImage+ColorProperty.m in Sources */,
+				338632C31CA97A2600F1FECF /* UIColor+AverageColorConverter.m in Sources */,
 				B2E567E91B316E6600906840 /* FICImageFormat.m in Sources */,
 				B2E567AC1B316DCA00906840 /* main.m in Sources */,
 				B2E567EA1B316E6600906840 /* FICImageTable.m in Sources */,
+				338632C01CA97A2600F1FECF /* AverageColorHelper.m in Sources */,
 				B2E567DD1B316E1000906840 /* FICDPhotosTableViewCell.m in Sources */,
 				B2E567E81B316E6600906840 /* FICImageCache.m in Sources */,
 				B2E567EC1B316E6600906840 /* FICImageTableEntry.m in Sources */,
