@@ -33,12 +33,13 @@
 
 + (NSDictionary *)averageColorInfoFromPath:(NSString *)path {
     path = [self imagePathFromPathPath:path];
+    
     NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:path];
     NSString *colorString = [dictionary objectForKey:COLOR_STRING_KEY];
     UIColor *color = [UIColor colorFromString:colorString];
     if (color && dictionary[IS_DARK_COLOR_KEY]) {
         return @{
-                 COLOR_STRING_KEY: colorString,
+                 COLOR_STRING_KEY: color,
                  IS_DARK_COLOR_KEY: dictionary[IS_DARK_COLOR_KEY]
                  };
     }
@@ -48,6 +49,13 @@
 
 #pragma mark - private methods
 + (NSString *)imagePathFromPathPath:(NSString *)path {
+    NSString *dir = [NSString stringWithFormat:@"%@/%@%@", NSHomeDirectory(),@"Documents/",COLOR_CACHE_PATH];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    if (![fm fileExistsAtPath:dir]) {
+        NSError *error=nil;
+        [fm createDirectoryAtPath:dir withIntermediateDirectories:YES attributes:nil error:&error];
+    }
+    
     NSString *md5 = [self md5:path];
     return [NSString stringWithFormat:@"%@/%@", [NSString stringWithFormat:@"%@/%@%@", NSHomeDirectory(),@"Documents/",COLOR_CACHE_PATH], md5];
 }
